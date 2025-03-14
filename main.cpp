@@ -1,9 +1,9 @@
-﻿#include <CLI/CLI.hpp>
-#include <base/stream/IFileStream.h>
+﻿#include <base/stream/IFileStream.h>
 #include <base/task/CancellationTokenSource.h>
+#include <CLI/CLI.hpp>
 #include <iostream>
-#include <tsduck/TSDumper.h>
 #include <tsduck/io/TSPacketStreamReader.h>
+#include <tsduck/TSDumper.h>
 
 using namespace video;
 using namespace std;
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		// 执行到这里就是解析命令行成功，并且命令行参数不是 -h,--help
 		cout << "正在解析 ts" << endl;
 
-		shared_ptr<base::IFileStream> input_file_stream = base::di::filesystem::OpenReadOnly(input_file_path);
+		shared_ptr<base::IFileStream> input_file_stream = base::di::file::OpenReadOnly(input_file_path);
 		TSPacketStreamReader reader{input_file_stream};
 		shared_ptr<TSDumper> ts_dumper{new TSDumper{output_file_path}};
 		base::CancellationTokenSource cancel_pump_source;
