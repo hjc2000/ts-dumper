@@ -13,8 +13,6 @@ if(1)
 endif()
 
 
-include(target_import_cli11)
-include(target_import_tsduck)
 
 # 定义生成规则
 add_executable(${ProjectName} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
